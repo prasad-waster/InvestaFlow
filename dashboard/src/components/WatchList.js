@@ -23,7 +23,7 @@ const WatchList = () => {
             axios.get("https://finnhub.io/api/v1/quote", {
               params: {
                 symbol,
-                token: "d1l6dcpr01qt8forhej0d1l6dcpr01qt8forhejg",
+                token: process.env.API_KEY,
               },
             })
           )

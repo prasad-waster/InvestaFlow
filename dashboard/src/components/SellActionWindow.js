@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useGeneralContext } from "./GeneralContext";
-import "./BuyActionWindow.css"; // reuse styling
+import "./Styles/BuyActionWindow.css"; // reuse styling
 
 const SellActionWindow = ({ uid }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
