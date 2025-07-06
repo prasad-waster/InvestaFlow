@@ -1,0 +1,29 @@
+# Ignore all node_modules folders in any subdirectory
+node_modules/
+**/node_modules/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temp files
+logs
+*.log
+npm-debug.log*
+
+# Ignore build folders
+**/dist/
+**/build/
+
+# Ignore environment files (only if you're not sharing them)
+*.env
+
+**/.env
+
+
+# Ignore IDE settings
+.vscode/
+.idea/
+
+# Ignore OS generated files
+*.swp
