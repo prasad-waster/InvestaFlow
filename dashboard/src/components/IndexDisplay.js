@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Styles/IndexDisplay.css";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
 const symbols = ["AAPL", "MSFT", "TSLA"];
 const IndexDisplay = () => {
   const [stocks, setStocks] = useState([]);
