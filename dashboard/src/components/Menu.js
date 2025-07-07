@@ -118,11 +118,11 @@ const Menu = () => {
           </div>
 
           <button
-            className="mx-3"
             onClick={handleLogout}
-            className="btn btn-sm btn-outline-danger px-2 py-1"
+            className="btn btn-outline-danger px-3 py-1 mx-2"
           >
-            <i className="bi bi-box-arrow-right me-1"></i>Logout
+            <i className="bi bi-box-arrow-right me-1"></i>
+            Logout
           </button>
         </div>
       </div>
