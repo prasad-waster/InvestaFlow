@@ -1,6 +1,8 @@
+const express = require("express");
+const router = express.Router();
+const User = require("../model/UserModel");
 const { Signup, Login, Logout } = require("../controller/AuthController");
 const { userVerification } = require("../middleware/AuthMiddleware");
-const router = require("express").Router();
 
 router.post("/signup", Signup);
 router.post("/login", Login);
@@ -24,7 +26,7 @@ router.get("/verify", userVerification, async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Token is valid",
-      user, // now full user object with username and email
+      user, // contains username, email, etc.
     });
   } catch (error) {
     console.error("Verify Error:", error);
