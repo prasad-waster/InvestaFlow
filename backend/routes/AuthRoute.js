@@ -6,6 +6,9 @@ router.post("/signup", Signup);
 router.post("/login", Login);
 
 router.get("/verify", userVerification, (req, res) => {
+  console.log("Verifying user...");
+  console.log("Cookies:", req.cookies);
+  console.log("User:", req.user);
   res.json({
     success: true,
     message: "Token is valid",

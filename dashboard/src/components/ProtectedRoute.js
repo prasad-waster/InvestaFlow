@@ -10,12 +10,9 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get(
-          " https://investaflow.onrender.com/verify",
-          {
-            withCredentials: true,
-          }
-        );
+        const res = await axios.get("https://investaflow.onrender.com/verify", {
+          withCredentials: true,
+        });
 
         if (res.data.success) {
           setIsAuthenticated(true);
@@ -36,7 +33,13 @@ const ProtectedRoute = ({ children }) => {
     checkAuth();
   }, [setUser]);
 
-  if (loading) return <h2>Loading...</h2>;
+  if (loading)
+    return (
+      <div className="loading-spinner-container">
+        <div className="spinner"></div>
+        <p>Loading...</p>
+      </div>
+    );
 
   return isAuthenticated ? children : null;
 };
