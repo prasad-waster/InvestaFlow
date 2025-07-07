@@ -15,7 +15,10 @@ function Hero() {
           more
         </p>
         <button
-          href="/login"
+          onClick={() =>
+            (window.location.href =
+              "https://investa-flow-home.vercel.app/signup")
+          }
           className="p-2 btn btn-primary fs-5"
           style={{ width: "20%", margin: "0 auto" }}
         >
