@@ -1,0 +1,41 @@
+.awards-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.awards-subtext {
+  font-size: 1rem;
+  color: #555;
+}
+
+.awards-list {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.awards-list li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  .awards-heading {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .awards-subtext {
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .awards-list {
+    padding-left: 15px;
+  }
+
+  .awards-list li {
+    font-size: 0.9rem;
+  }
+}

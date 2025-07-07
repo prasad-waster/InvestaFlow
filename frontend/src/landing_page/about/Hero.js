@@ -3,17 +3,20 @@ import React from "react";
 function Hero() {
   return (
     <div className="container">
-      <div className="row p-5 mt-5 mb-5">
-        <h1 className="fs-2 text-center">
+      {/* Top Heading */}
+      <div className="row p-4 p-md-5 mt-4 mt-md-5 mb-4 mb-md-5 text-center">
+        <h1 className="fs-4 fs-md-2">
           We pioneered the discount broking model in India.
-          <br /> Now, we are breaking ground with our technology.
+          <br className="d-none d-md-block" />
+          Now, we are breaking ground with our technology.
         </h1>
       </div>
+
       <div
-        className="row p-5 mt-5 border-top text-muted"
+        className="row border-top text-muted"
         style={{ lineHeight: "2", fontSize: "16px" }}
       >
-        <div className="col-6 p-5">
+        <div className="col-12 col-md-6 p-4 p-md-5">
           <p>
             We kick-started operations on the 15th of August, 2010 with the goal
             of breaking all barriers that traders and investors face in India in
@@ -31,14 +34,13 @@ function Hero() {
             15% of all Indian retail trading volumes.
           </p>
         </div>
-        <div className="col-6 p-5">
+        <div className="col-12 col-md-6 p-4 p-md-5">
           <p>
-            {" "}
             In addition, we run a number of popular open online educational and
             community initiatives to empower retail traders and investors.
           </p>
           <p>
-            <a href="" style={{ textDecoration: "none" }}>
+            <a href="#" style={{ textDecoration: "none" }}>
               Rainmatter
             </a>
             , our fintech fund and incubator, has invested in several fintech
@@ -47,12 +49,12 @@ function Hero() {
           <p>
             And yet, we are always up to something new every day. Catch up on
             the latest updates on our{" "}
-            <a href="" style={{ textDecoration: "none" }}>
+            <a href="#" style={{ textDecoration: "none" }}>
               blog
             </a>{" "}
             or see what the media is saying about us or learn more about our
             business and product{" "}
-            <a href="" style={{ textDecoration: "none" }}>
+            <a href="#" style={{ textDecoration: "none" }}>
               philosophies.
             </a>
           </p>

@@ -133,3 +133,16 @@ img {
     font-size: 0.9rem;
   }
 }
+@media (max-width: 576px) {
+  #supportHero h1 {
+    font-size: 1.1rem !important;
+  }
+
+  #supportHero input {
+    width: 100%;
+  }
+
+  #supportWrapper {
+    text-align: center;
+  }
+}

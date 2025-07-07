@@ -19,7 +19,6 @@ root.render(
   <BrowserRouter>
     <Navbar />
     <Routes>
-      {/* Public routes */}
       <Route path="/" element={<HomePage />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />

@@ -1,201 +1,125 @@
 import React from "react";
 
 function Footer() {
+  const linkStyle = { textDecoration: "none" };
+
   return (
     <footer style={{ backgroundColor: "#fbfbfb" }} className="border-top">
       <div className="container mt-5">
         <div className="row mt-5">
           <div className="col">
-            <img src="media/images/logo.svg" style={{ width: "50%" }} />
+            <img
+              src="media/images/logo.svg"
+              alt="InvestaFlow Logo"
+              style={{ width: "50%" }}
+            />
             <p className="mt-2">
-              &copy;2025, InvestaFlow Ltd.
-              <br />
+              &copy; 2025, InvestaFlow Ltd. <br />
               All rights reserved.
             </p>
           </div>
+
           <div className="col">
             <p>Company</p>
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              About
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Product
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Pricing
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Refferal Programme
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Careers
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              InvestaFlow.tech
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Press & media
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              InvestaFlow Care
-            </a>
+            {[
+              "About",
+              "Product",
+              "Pricing",
+              "Referral Programme",
+              "Careers",
+              "InvestaFlow.tech",
+              "Press & media",
+              "InvestaFlow Care",
+            ].map((item, idx) => (
+              <div key={idx} className="mb-2">
+                <a href="#" className="text-muted" style={linkStyle}>
+                  {item}
+                </a>
+              </div>
+            ))}
           </div>
+
           <div className="col">
             <p>Support</p>
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Contact
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Support Portal
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              IF-connect blog
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              List of charges
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Downloads and resources
-            </a>
-            <br />
+            {[
+              "Contact",
+              "Support Portal",
+              "IF-connect blog",
+              "List of charges",
+              "Downloads and resources",
+            ].map((item, idx) => (
+              <div key={idx} className="mb-2">
+                <a href="#" className="text-muted" style={linkStyle}>
+                  {item}
+                </a>
+              </div>
+            ))}
           </div>
+
           <div className="col">
             <p>Account</p>
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Open an account
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              Fund transfer
-            </a>
-            <br />
-            <a
-              href=""
-              className="text-muted"
-              style={{ textDecoration: "none" }}
-            >
-              60 day challenge
-            </a>
-            <br />
+            {["Open an account", "Fund transfer", "60 day challenge"].map(
+              (item, idx) => (
+                <div key={idx} className="mb-2">
+                  <a href="#" className="text-muted" style={linkStyle}>
+                    {item}
+                  </a>
+                </div>
+              )
+            )}
           </div>
+
           <div className="mt-5 text-muted" style={{ fontSize: "14px" }}>
             <p>
-              InvestaFlow Broking Ltd.: Member of NSE, BSE​ &​ MCX – SEBI
-              Registration no.: INZ000031633 CDSL/NSDL: Depository services
-              through InvestaFlow Broking Ltd. – SEBI Registration no.:
-              IN-DP-431-2019 Commodity Trading through InvestaFlow Commodities
+              <strong>InvestaFlow Broking Ltd.</strong>: Member of NSE, BSE &
+              MCX – SEBI Registration no.: INZ000031633. CDSL/NSDL: Depository
+              services through InvestaFlow Broking Ltd. – SEBI Registration no.:
+              IN-DP-431-2019. Commodity Trading through InvestaFlow Commodities
               Pvt. Ltd. MCX: 46025; NSE-50001 – SEBI Registration no.:
-              INZ000038238 Registered Address: InvestaFlow Broking Ltd.,
-              #153/154, 4th Cross, Dollars Colony, Opp. Clarence Public School,
-              J.P Nagar 4th Phase, Bengaluru - 560078, Karnataka, India. For any
-              complaints pertaining to securities broking please write to
-              complaints@InvestaFlow.com, for DP related to dp@InvestaFlow.com.
-              Please ensure you carefully read the Risk Disclosure Document as
-              prescribed by SEBI | ICF
+              INZ000038238.
             </p>
             <p>
-              Procedure to file a complaint on SEBI SCORES: Register on SCORES
-              portal. Mandatory details for filing complaints on SCORES: Name,
-              PAN, Address, Mobile Number, E-mail ID. Benefits: Effective
-              Communication, Speedy redressal of the grievances
+              Registered Address: InvestaFlow Broking Ltd., #153/154, 4th Cross,
+              Dollars Colony, Opp. Clarence Public School, J.P Nagar 4th Phase,
+              Bengaluru - 560078, Karnataka, India. For any complaints, please
+              email <strong>complaints@InvestaFlow.com</strong>, and for DP
+              related queries: <strong>dp@InvestaFlow.com</strong>.
             </p>
             <p>
-              Attention investors: 1) Stock brokers can accept securities as
-              margins from clients only by way of pledge in the depository
-              system w.e.f September 01, 2020. 2) Update your e-mail and phone
-              number with your stock broker / depository participant and receive
-              OTP directly from depository on your e-mail and/or mobile number
-              to create pledge. 3) Check your securities / MF / bonds in the
-              consolidated account statement issued by NSDL/CDSL every month.
+              Please ensure you read the Risk Disclosure Document as prescribed
+              by SEBI | ICF.
             </p>
             <p>
-              "Prevent unauthorised transactions in your account. Update your
-              mobile numbers/email IDs with your stock brokers. Receive
-              information of your transactions directly from Exchange on your
-              mobile/email at the end of the day. Issued in the interest of
-              investors. KYC is one time exercise while dealing in securities
-              markets - once KYC is done through a SEBI registered intermediary
-              (broker, DP, Mutual Fund etc.), you need not undergo the same
-              process again when you approach another intermediary." Dear
-              Investor, if you are subscribing to an IPO, there is no need to
-              issue a cheque. Please write the Bank account number and sign the
-              IPO application form to authorize your bank to make payment in
-              case of allotment. In case of non allotment the funds will remain
-              in your bank account. As a business we don't give stock tips, and
-              have not authorized anyone to trade on behalf of others. If you
-              find anyone claiming to be part of InvestaFlow and offering such
-              services, please create a ticket here.
+              <strong>SEBI SCORES Complaint Procedure:</strong> Register with
+              SCORES. Mandatory details: Name, PAN, Address, Mobile, Email.
+              Benefit: Effective communication and quick redressal.
+            </p>
+            <p>
+              <strong>Attention Investors:</strong>
+              <ul>
+                <li>
+                  Securities accepted as margin only via pledge system w.e.f Sep
+                  01, 2020.
+                </li>
+                <li>
+                  Update mobile/email to receive OTP for pledges directly from
+                  depository.
+                </li>
+                <li>
+                  Review your holdings via NSDL/CDSL monthly consolidated
+                  statement.
+                </li>
+              </ul>
+            </p>
+            <p>
+              Prevent unauthorized transactions. Stay informed via mobile/email
+              directly from the exchange. KYC is mandatory and only once per
+              SEBI intermediary.
+            </p>
+            <p>
+              For IPOs, avoid cheques. Authorize your bank via application form.
+              We don’t provide stock tips or trading advice. Report
+              impersonators via support.
             </p>
           </div>
         </div>

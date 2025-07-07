@@ -1,41 +1,63 @@
 import React from "react";
+import "../Styles/Stats.css"; // Add styling here
 
 function Stats() {
   return (
-    <div className="container p-3">
-      <div className="row p-5">
-        <div className="col-6 p-5">
-          <h1 className="fs-2 mb-5">Trust with confidence</h1>
-          <h2 className="fs-4">Customer-first always</h2>
-          <p className="text-muted">
-            Fhat's why 1.3+ crore customers trust Zerodha with ₹3.5+ lakh crores
-            worth of equity investments.
-          </p>
-          <h2 className="fs-4">No spam and gimmicks</h2>
-          <p className="text-muted">
-            No gimmicks, spam, "gamification", or annoying push notifications.
-            High quality apps that you use at your pace, the way you like.
-          </p>
-          <h2 className="fs-4">The InvestaFlow Universe</h2>
-          <p className="text-muted">
-            Not just an app, but a whole ecosystem. Our investments in 30+
-            fintech startups offer you tailored services specific to your needs.
-          </p>
-          <h2 className="fs-4">Do better with money</h2>
-          <p className="text-muted">
-            With initiatives like Nudge and Kill Switch, we don't just
-            facilitate transactions, but actively help you do better with your
-            money.
-          </p>
+    <div className="container py-5">
+      <div className="row align-items-center">
+        {/* Text Content */}
+        <div className="col-12 col-md-6 px-4 mb-5 mb-md-0">
+          <h1 className="fs-2 mb-4 text-center text-md-start">
+            Trust with confidence
+          </h1>
+
+          <div className="mb-4">
+            <h2 className="fs-5 fw-semibold">Customer-first always</h2>
+            <p className="text-muted">
+              That's why 1.3+ crore customers trust InvestaFlow with ₹3.5+ lakh
+              crores worth of equity investments.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h2 className="fs-5 fw-semibold">No spam and gimmicks</h2>
+            <p className="text-muted">
+              No gimmicks, spam, or annoying notifications. High quality apps
+              you use at your pace, the way you like.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h2 className="fs-5 fw-semibold">The InvestaFlow Universe</h2>
+            <p className="text-muted">
+              Not just an app, but an ecosystem. Our investments in 30+ fintechs
+              offer tailored services specific to your needs.
+            </p>
+          </div>
+
+          <div className="mb-4">
+            <h2 className="fs-5 fw-semibold">Do better with money</h2>
+            <p className="text-muted">
+              With initiatives like Nudge and Kill Switch, we help you do better
+              with your money, not just transact.
+            </p>
+          </div>
         </div>
-        <div className="col-6 p-3 mt-5 mb-5">
-          <img src="media/images/ecosystem.png" style={{ width: "95%" }} />
-          <div className="text-center">
-            <a href="" className="mx-5" style={{ textDecoration: "none" }}>
-              Explore our products <i class="fa-solid fa-arrow-right-long"> </i>
+
+        {/* Image and Links */}
+        <div className="col-12 col-md-6 px-4 text-center">
+          <img
+            src="media/images/ecosystem.png"
+            alt="Ecosystem"
+            className="img-fluid mb-4"
+          />
+          <div className="d-flex flex-column flex-md-row justify-content-center gap-4">
+            <a href="#" className="stats-link">
+              Explore our products{" "}
+              <i className="fa-solid fa-arrow-right-long"></i>
             </a>
-            <a href="" style={{ textDecoration: "none" }}>
-              Try InvestaFlow <i class="fa-solid fa-arrow-right-long"></i>
+            <a href="#" className="stats-link">
+              Try InvestaFlow <i className="fa-solid fa-arrow-right-long"></i>
             </a>
           </div>
         </div>

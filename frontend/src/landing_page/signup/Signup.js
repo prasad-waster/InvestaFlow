@@ -37,12 +37,12 @@ const Signup = () => {
       );
 
       console.log("Signup response:", data);
+
       if (data?.success) {
         handleSuccess(data.message || "Signup successful");
         setTimeout(() => {
           window.location.href = `${process.env.REACT_APP_DASHBOARD_URL}/dashboard`;
         }, 2000);
-
         setInputValue({ email: "", password: "", username: "" });
       } else {
         handleError(data?.message || "Signup failed");
@@ -62,18 +62,19 @@ const Signup = () => {
     <div className="signup-container">
       {loading ? (
         <div className="spinner-container">
-          <div className="spinner"></div>
+          <div className="spinner" />
           <p>Creating your account...</p>
         </div>
       ) : (
-        <form className="signup-form" onSubmit={handleSubmit}>
+        <form className="signup-form" onSubmit={handleSubmit} noValidate>
           <h2>Create Account</h2>
 
           <div className="form-group">
-            <label>Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
+              id="email"
               value={email}
               placeholder="Enter your email"
               onChange={handleOnChange}
@@ -82,10 +83,11 @@ const Signup = () => {
           </div>
 
           <div className="form-group">
-            <label>Username</label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               name="username"
+              id="username"
               value={username}
               placeholder="Enter your username"
               onChange={handleOnChange}
@@ -94,10 +96,11 @@ const Signup = () => {
           </div>
 
           <div className="form-group">
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"
+              id="password"
               value={password}
               placeholder="Enter your password"
               onChange={handleOnChange}

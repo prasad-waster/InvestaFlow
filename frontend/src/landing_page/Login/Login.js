@@ -11,7 +11,6 @@ const Login = () => {
   });
 
   const [loading, setLoading] = useState(false);
-
   const { email, password } = inputValue;
 
   const handleOnChange = (e) => {
@@ -35,8 +34,6 @@ const Login = () => {
         { withCredentials: true }
       );
 
-      console.log("Login response:", data);
-
       if (data?.success) {
         handleSuccess(data.message || "Login successful");
 
@@ -44,13 +41,12 @@ const Login = () => {
           window.location.href = `${process.env.REACT_APP_DASHBOARD_URL}/dashboard`;
         }, 2000);
 
-        setInputValue({ email: "", password: "" }); // Clear inputs only on success
+        setInputValue({ email: "", password: "" });
       } else {
         handleError(data?.message || "Invalid credentials");
       }
     } catch (error) {
       const backendMsg = error?.response?.data?.message || error.message;
-      console.error("Login failed:", backendMsg);
       handleError(backendMsg);
     } finally {
       setLoading(false);
@@ -61,16 +57,17 @@ const Login = () => {
     <div className="login-container">
       {loading ? (
         <div className="spinner-container">
-          <div className="spinner"></div>
+          <div className="spinner" />
           <p>Logging in...</p>
         </div>
       ) : (
         <form className="login-form" onSubmit={handleSubmit}>
-          <h2>Welcome Back</h2>
+          <h2 className="text-center">Welcome Back</h2>
 
           <div className="login-group">
-            <label>Email</label>
+            <label htmlFor="email">Email</label>
             <input
+              id="email"
               type="email"
               name="email"
               value={email}
@@ -81,8 +78,9 @@ const Login = () => {
           </div>
 
           <div className="login-group">
-            <label>Password</label>
+            <label htmlFor="password">Password</label>
             <input
+              id="password"
               type="password"
               name="password"
               value={password}
@@ -92,12 +90,15 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit" className="login-btn">
+          <button type="submit" className="login-btn w-100 mt-2">
             Login
           </button>
 
-          <p className="login-redirect">
-            Don’t have an account? <Link to="/signup">Sign up</Link>
+          <p className="login-redirect text-center mt-3">
+            Don’t have an account?{" "}
+            <Link to="/signup" className="text-decoration-none">
+              Sign up
+            </Link>
           </p>
         </form>
       )}
