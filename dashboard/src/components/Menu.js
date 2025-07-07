@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useUser } from "./UserContext";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -8,7 +8,6 @@ import "./Styles/Menu.css";
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const { user, setUser } = useUser();
-  const navigate = useNavigate();
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
@@ -42,89 +41,74 @@ const Menu = () => {
   const activeMenuClass = "menu selected";
 
   return (
-    <div className="menu-container">
+    <div className="menu-container d-flex align-items-center justify-content-between px-4 py-2">
+      {/* Logo on the left */}
       <img src="/investaFlow.png" alt="Logo" style={{ width: "120px" }} />
 
-      <div className="menus" style={{ marginTop: "25px" }}>
-        <ul>
-          <li>
-            <Link
-              to="/dashboard"
-              onClick={() => handleMenuClick(0)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 0 ? activeMenuClass : menuClass}>
-                Dashboard
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/Orders"
-              onClick={() => handleMenuClick(1)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 1 ? activeMenuClass : menuClass}>
-                Orders
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/holdings"
-              onClick={() => handleMenuClick(2)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 2 ? activeMenuClass : menuClass}>
-                Holdings
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/positions"
-              onClick={() => handleMenuClick(3)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 3 ? activeMenuClass : menuClass}>
-                Positions
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/funds"
-              onClick={() => handleMenuClick(4)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>
-                Funds
-              </p>
-            </Link>
-          </li>
-        </ul>
-        <hr />
-        <div className="profile d-flex align-items-center justify-content-between p-2 mb-3 border rounded bg-light shadow-sm">
-          <div className="d-flex align-items-center gap-2">
-            <div
-              className="avatar bg-primary text-white rounded-circle text-center fw-bold d-flex justify-content-center align-items-center"
-              style={{ width: "36px", height: "36px" }}
-            >
-              {user?.username?.substring(0, 2).toUpperCase() || "UN"}
-            </div>
-            <p className="mb-0 fs-6 fw-semibold">
-              {user?.username || "Loading..."}
-            </p>
-          </div>
+      {/* Centered menu, username, and logout */}
+      <div className="d-flex align-items-center gap-4">
+        <Link
+          to="/dashboard"
+          onClick={() => handleMenuClick(0)}
+          className="text-decoration-none"
+        >
+          <p className={selectedMenu === 0 ? activeMenuClass : menuClass}>
+            Dashboard
+          </p>
+        </Link>
+        <Link
+          to="/dashboard/Orders"
+          onClick={() => handleMenuClick(1)}
+          className="text-decoration-none"
+        >
+          <p className={selectedMenu === 1 ? activeMenuClass : menuClass}>
+            Orders
+          </p>
+        </Link>
+        <Link
+          to="/dashboard/holdings"
+          onClick={() => handleMenuClick(2)}
+          className="text-decoration-none"
+        >
+          <p className={selectedMenu === 2 ? activeMenuClass : menuClass}>
+            Holdings
+          </p>
+        </Link>
+        <Link
+          to="/dashboard/positions"
+          onClick={() => handleMenuClick(3)}
+          className="text-decoration-none"
+        >
+          <p className={selectedMenu === 3 ? activeMenuClass : menuClass}>
+            Positions
+          </p>
+        </Link>
+        <Link
+          to="/dashboard/funds"
+          onClick={() => handleMenuClick(4)}
+          className="text-decoration-none"
+        >
+          <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>
+            Funds
+          </p>
+        </Link>
 
-          <button
-            onClick={handleLogout}
-            className="btn btn-outline-danger px-3 py-1 mx-2"
-          >
-            <i className="bi bi-box-arrow-right me-1"></i>
-            Logout
-          </button>
-        </div>
+        {/* Divider */}
+        <div style={{ width: "1px", height: "24px", background: "#ddd" }} />
+
+        {/* Username and Logout inline */}
+        <span className="menu mb-0">{user?.username || "Loading..."}</span>
+        <button
+          onClick={handleLogout}
+          className="menu btn btn-sm bg-transparent border-0 p-0"
+          style={{
+            fontSize: "0.8rem",
+            color: "inherit",
+            marginLeft: "4px",
+          }}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
