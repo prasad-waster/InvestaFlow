@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
+import { toast } from "react-toastify";
 import axios from "axios";
 import "./Styles/Menu.css";
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const { user, setUser } = useUser();
   const navigate = useNavigate();
-
-  const handleMenuClick = (index) => {
-    setSelectedMenu(index);
-  };
 
   const handleLogout = async () => {
     try {
@@ -19,10 +16,20 @@ const Menu = () => {
         {},
         { withCredentials: true }
       );
-      setUser(null); // Clear user context
-      navigate("/login"); // Redirect to login
+      setUser(null); // clear context/state
+      toast.success("Logged out successfully", {
+        position: "bottom-right",
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (err) {
       console.error("Logout failed", err);
+      toast.error("Logout failed. Please try again.", {
+        position: "bottom-left",
+        autoClose: 3000,
+      });
     }
   };
 
@@ -48,7 +55,7 @@ const Menu = () => {
           </li>
           <li>
             <Link
-              to="/dashboard/getOrders"
+              to="/dashboard/Orders"
               onClick={() => handleMenuClick(1)}
               style={{ textDecoration: "none" }}
             >
@@ -59,7 +66,7 @@ const Menu = () => {
           </li>
           <li>
             <Link
-              to="/dashboard/allholdings"
+              to="/dashboard/holdings"
               onClick={() => handleMenuClick(2)}
               style={{ textDecoration: "none" }}
             >
@@ -70,7 +77,7 @@ const Menu = () => {
           </li>
           <li>
             <Link
-              to="/dashboard/allpositions"
+              to="/dashboard/positions"
               onClick={() => handleMenuClick(3)}
               style={{ textDecoration: "none" }}
             >
@@ -99,7 +106,7 @@ const Menu = () => {
           <div className="avatar">
             {user?.username?.substring(0, 2).toUpperCase() || "UN"}
           </div>
-          <p style={{ fontSize: "20px" }} className="username">
+          <p style={{ fontSize: "15px" }} className="username">
             <b>{user?.username || "Loading..."}</b>
           </p>
           <button onClick={handleLogout} className="logout-btn">
