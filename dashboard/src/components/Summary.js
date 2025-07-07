@@ -14,16 +14,19 @@ const Summary = () => {
 
       <div className="section-divider" />
 
-      <div className="summary-section">
-        <div className="card">
+      <div
+        className="summary-section d-flex flex-wrap justify-content-between"
+        style={{ gap: "1rem" }}
+      >
+        <div className="card flex-grow-1" style={{ minWidth: "250px" }}>
           <h4>Total Investment</h4>
           <p>₹29,875.55</p>
         </div>
-        <div className="card">
+        <div className="card flex-grow-1" style={{ minWidth: "250px" }}>
           <h4>Current Value</h4>
           <p>₹31,428.95</p>
         </div>
-        <div className="card">
+        <div className="card flex-grow-1" style={{ minWidth: "250px" }}>
           <h4>Net P&L</h4>
           <p className="up">+₹1,553.40 (5.20%)</p>
         </div>

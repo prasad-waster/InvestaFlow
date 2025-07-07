@@ -4,6 +4,7 @@ import "./Styles/IndexDisplay.css";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const symbols = ["AAPL", "MSFT", "TSLA"];
+
 const IndexDisplay = () => {
   const [stocks, setStocks] = useState([]);
 
@@ -35,19 +36,26 @@ const IndexDisplay = () => {
   }, []);
 
   return (
-    <div className="stock-grid">
-      {stocks.map((stock, index) => {
-        const isUp = stock.change >= 0;
-        return (
-          <div className="stock-card" key={index}>
-            <h3>{stock.symbol}</h3>
-            <p className="price">₹{stock.price?.toFixed(2)}</p>
-            <p className={`change ${isUp ? "up" : "down"}`}>
-              {isUp ? "▲" : "▼"} {stock.percent?.toFixed(2)}%
-            </p>
-          </div>
-        );
-      })}
+    <div className="container-fluid px-3 px-md-5">
+      <div className="row g-3">
+        {stocks.map((stock, index) => {
+          const isUp = stock.change >= 0;
+          return (
+            <div
+              key={index}
+              className="col-12 col-sm-6 col-md-4 d-flex justify-content-center"
+            >
+              <div className="stock-card text-center">
+                <h3>{stock.symbol}</h3>
+                <p className="price">₹{stock.price?.toFixed(2)}</p>
+                <p className={`change ${isUp ? "up" : "down"}`}>
+                  {isUp ? "▲" : "▼"} {stock.percent?.toFixed(2)}%
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

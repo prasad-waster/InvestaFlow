@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import GeneralContext from "./GeneralContext";
 import { Tooltip, Grow } from "@mui/material";
+import "./Styles/WatchList.css";
 import {
   BarChartOutlined,
   KeyboardArrowDown,
