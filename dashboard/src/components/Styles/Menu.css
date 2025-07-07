@@ -90,3 +90,56 @@
 .collapse {
   transition: height 0.3s ease, opacity 0.3s ease;
 }
+
+.dropdown-menu-mobile {
+  position: absolute;
+  top: 60px; /* Adjust based on your TopBar height */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dropdown-link {
+  padding: 10px 20px;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-link:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu-mobile {
+  position: absolute; /* ✅ Now it opens just below TopBar */
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 9999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -3rem;
+}
+
+.dropdown-link {
+  padding: 12px 0;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  color: #000;
+  font-weight: 500;
+  text-decoration: none;
+}

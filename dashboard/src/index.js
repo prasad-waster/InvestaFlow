@@ -17,9 +17,9 @@ root.render(
           <Route
             path="/dashboard/*"
             element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <Home />
+              // </ProtectedRoute>
             }
           />
         </Routes>

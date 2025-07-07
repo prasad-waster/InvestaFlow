@@ -210,17 +210,16 @@ const Menu = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
       {isDropdownOpen && (
-        <div className="dropdown-menu-mobile mt-2">
+        <div className="dropdown-menu-mobile">
           {menuItems.map((item, index) => (
             <Link
               key={index}
               to={item.path}
               className="dropdown-link"
               onClick={() => {
-                handleMenuClick(index); // highlight selected
-                setIsDropdownOpen(false); // close dropdown
+                handleMenuClick(index);
+                setIsDropdownOpen(false);
               }}
             >
               {item.label}
