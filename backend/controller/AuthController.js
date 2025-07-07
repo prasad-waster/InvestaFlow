@@ -20,7 +20,6 @@ module.exports.Signup = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const user = await User.create({
       email,
       username,
@@ -32,9 +31,9 @@ module.exports.Signup = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "Lax",
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 3 * 24 * 60 * 60 * 1000, // 3 days
+      secure: true,
+      sameSite: "None",
+      maxAge: 24 * 60 * 60 * 1000,
     });
 
     const { password: _, ...safeUser } = user._doc;
@@ -75,25 +74,19 @@ module.exports.Login = async (req, res) => {
     }
 
     const token = createSecretToken(user._id);
-
-    res
-      .cookie("token", token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-        maxAge: 24 * 60 * 60 * 1000,
-      })
-      .json({ success: true, message: "Login successful", user });
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
 
     const { password: _, ...safeUser } = user._doc;
 
     return res.status(200).json({
       success: true,
       message: "Login successful",
-      user: {
-        username: user.username,
-        email: user.email,
-      },
+      user: safeUser,
     });
   } catch (error) {
     console.error("Login Error:", error);
@@ -102,6 +95,10 @@ module.exports.Login = async (req, res) => {
 };
 
 module.exports.Logout = (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "None",
+  });
   return res.status(200).json({ success: true, message: "Logged out" });
 };
