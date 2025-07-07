@@ -9,7 +9,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/getOrders")
+      .get("https://investaflow.onrender.com/getOrders")
       .then((res) => {
         setOrders(res.data);
         setLoading(false);

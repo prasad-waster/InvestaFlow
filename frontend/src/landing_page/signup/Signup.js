@@ -11,6 +11,8 @@ const Signup = () => {
     username: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const { email, password, username } = inputValue;
 
   const handleOnChange = (e) => {
@@ -26,6 +28,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/signup`,
@@ -46,6 +49,8 @@ const Signup = () => {
     } catch (error) {
       console.error("Signup failed:", error);
       handleError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
 
     setInputValue({ email: "", password: "", username: "" });
@@ -53,53 +58,60 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <h2>Create Account</h2>
-
-        <div className="form-group">
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Enter your email"
-            onChange={handleOnChange}
-            required
-          />
+      {loading ? (
+        <div className="spinner-container">
+          <div className="spinner"></div>
+          <p>Creating your account...</p>
         </div>
+      ) : (
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <h2>Create Account</h2>
 
-        <div className="form-group">
-          <label>Username</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            placeholder="Enter your username"
-            onChange={handleOnChange}
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={handleOnChange}
+              required
+            />
+          </div>
 
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Enter your password"
-            onChange={handleOnChange}
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              value={username}
+              placeholder="Enter your username"
+              onChange={handleOnChange}
+              required
+            />
+          </div>
 
-        <button type="submit" className="submit-btn">
-          Sign Up
-        </button>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Enter your password"
+              onChange={handleOnChange}
+              required
+            />
+          </div>
 
-        <p className="redirect-text">
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
-      </form>
+          <button type="submit" className="submit-btn">
+            Sign Up
+          </button>
+
+          <p className="redirect-text">
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </form>
+      )}
       <ToastContainer />
     </div>
   );

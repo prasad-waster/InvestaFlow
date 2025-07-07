@@ -1,13 +1,29 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
-
+import axios from "axios";
+import "./Styles/Menu.css";
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
-  const { user } = useUser();
+  const { user, setUser } = useUser();
+  const navigate = useNavigate();
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/logout`,
+        {},
+        { withCredentials: true }
+      );
+      setUser(null); // Clear user context
+      navigate("/login"); // Redirect to login
+    } catch (err) {
+      console.error("Logout failed", err);
+    }
   };
 
   const menuClass = "menu";
@@ -32,7 +48,7 @@ const Menu = () => {
           </li>
           <li>
             <Link
-              to="/dashboard/orders"
+              to="/dashboard/getOrders"
               onClick={() => handleMenuClick(1)}
               style={{ textDecoration: "none" }}
             >
@@ -43,7 +59,7 @@ const Menu = () => {
           </li>
           <li>
             <Link
-              to="/dashboard/holdings"
+              to="/dashboard/allholdings"
               onClick={() => handleMenuClick(2)}
               style={{ textDecoration: "none" }}
             >
@@ -54,7 +70,7 @@ const Menu = () => {
           </li>
           <li>
             <Link
-              to="/dashboard/positions"
+              to="/dashboard/allpositions"
               onClick={() => handleMenuClick(3)}
               style={{ textDecoration: "none" }}
             >
@@ -86,6 +102,9 @@ const Menu = () => {
           <p style={{ fontSize: "20px" }} className="username">
             <b>{user?.username || "Loading..."}</b>
           </p>
+          <button onClick={handleLogout} className="logout-btn">
+            Logout
+          </button>
         </div>
       </div>
     </div>
