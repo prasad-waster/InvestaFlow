@@ -12,3 +12,51 @@
 .logout-btn:hover {
   background-color: #cc0000;
 }
+.avatar-initials {
+  width: 36px;
+  height: 36px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.username-text {
+  font-weight: 500;
+  font-size: 14px;
+  color: #000;
+}
+
+.logout-btn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #333;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+}
+
+@media (max-width: 991px) {
+  .profile-area {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logout-btn {
+    margin-top: 5px;
+  }
+}

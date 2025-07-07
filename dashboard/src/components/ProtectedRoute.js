@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useUser } from "../components/UserContext"; // update path if needed
+import { useUser } from "../components/UserContext";
 
 const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -16,7 +16,7 @@ const ProtectedRoute = ({ children }) => {
 
         if (res.data.success) {
           setIsAuthenticated(true);
-          setUser(res.data.user); // ✅ Store user context
+          setUser(res.data.user);
         } else {
           throw new Error("User not authenticated");
         }
