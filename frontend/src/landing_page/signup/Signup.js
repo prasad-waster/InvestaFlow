@@ -36,24 +36,26 @@ const Signup = () => {
         { withCredentials: true }
       );
 
-      const { success, message } = data;
-
-      if (success) {
-        handleSuccess(message);
+      console.log("Signup response:", data);
+      if (data?.success) {
+        handleSuccess(data.message || "Signup successful");
         setTimeout(() => {
           window.location.href = `${process.env.REACT_APP_DASHBOARD_URL}/dashboard`;
         }, 2000);
+
+        setInputValue({ email: "", password: "", username: "" });
       } else {
-        handleError(message);
+        handleError(data?.message || "Signup failed");
       }
     } catch (error) {
       console.error("Signup failed:", error);
-      handleError("Something went wrong. Please try again.");
+      const backendMsg =
+        error?.response?.data?.message ||
+        "Something went wrong. Please try again.";
+      handleError(backendMsg);
     } finally {
       setLoading(false);
     }
-
-    setInputValue({ email: "", password: "", username: "" });
   };
 
   return (

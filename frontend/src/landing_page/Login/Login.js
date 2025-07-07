@@ -35,25 +35,26 @@ const Login = () => {
         { withCredentials: true }
       );
 
-      const { success, message } = data;
+      console.log("Login response:", data);
 
-      if (success) {
-        handleSuccess(message);
+      if (data?.success) {
+        handleSuccess(data.message || "Login successful");
+
         setTimeout(() => {
           window.location.href = `${process.env.REACT_APP_DASHBOARD_URL}/dashboard`;
         }, 2000);
+
+        setInputValue({ email: "", password: "" }); // Clear inputs only on success
       } else {
-        handleError(message);
+        handleError(data?.message || "Invalid credentials");
       }
     } catch (error) {
-      const backendMsg = error?.response?.data?.message;
-      console.error("Login failed:", backendMsg || error.message);
-      handleError(backendMsg || "Something went wrong. Please try again.");
+      const backendMsg = error?.response?.data?.message || error.message;
+      console.error("Login failed:", backendMsg);
+      handleError(backendMsg);
     } finally {
       setLoading(false);
     }
-
-    setInputValue({ email: "", password: "" });
   };
 
   return (

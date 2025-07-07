@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useUser } from "../components/UserContext"; // adjust path if needed
+import { useUser } from "../components/UserContext"; // update path if needed
 
 const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -16,10 +16,9 @@ const ProtectedRoute = ({ children }) => {
 
         if (res.data.success) {
           setIsAuthenticated(true);
-          setUser(res.data.user);
+          setUser(res.data.user); // ✅ Store user context
         } else {
-          setIsAuthenticated(false);
-          window.location.href = "https://investa-flow-home.vercel.app/login";
+          throw new Error("User not authenticated");
         }
       } catch (err) {
         console.error("Auth check failed", err);
@@ -33,13 +32,14 @@ const ProtectedRoute = ({ children }) => {
     checkAuth();
   }, [setUser]);
 
-  if (loading)
+  if (loading) {
     return (
       <div className="loading-spinner-container">
         <div className="spinner"></div>
         <p>Loading...</p>
       </div>
     );
+  }
 
   return isAuthenticated ? children : null;
 };

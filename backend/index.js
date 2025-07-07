@@ -51,11 +51,18 @@ app.post("/newOrder", async (req, res) => {
   try {
     const { name, qty, price, mode } = req.body;
 
+    if (!name || !qty || !price || !mode) {
+      return res.status(400).json({
+        success: false,
+        message: "All order fields are required",
+      });
+    }
+
     const newOrder = new OrdersModel({ name, qty, price, mode });
     await newOrder.save();
 
     return res.status(201).json({
-      success: true, //
+      success: true,
       message: "Order placed successfully",
       order: newOrder,
     });

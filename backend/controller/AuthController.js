@@ -37,7 +37,7 @@ module.exports.Signup = async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000,
     });
 
-    const { password: _, ...safeUser } = user._doc;
+    const { password: _, ...safeUser } = user.toObject();
 
     return res.status(201).json({
       success: true,
@@ -83,7 +83,7 @@ module.exports.Login = async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000,
     });
 
-    const { password: _, ...safeUser } = user._doc;
+    const { password: _, ...safeUser } = user.toObject();
 
     return res.status(200).json({
       success: true,
@@ -101,6 +101,7 @@ module.exports.Logout = (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: "None",
+    path: "/",
   });
 
   return res.status(200).json({
