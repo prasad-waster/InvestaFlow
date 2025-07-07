@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
+import { toast } from "react-toastify";
+
 import axios from "axios";
 import "./Styles/Menu.css";
+
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const { user, setUser } = useUser();
