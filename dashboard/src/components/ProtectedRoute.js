@@ -38,7 +38,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (loading) return <h2>Loading...</h2>;
 
-  return isAuthenticated ? children : null; // Already redirected if false
+  return isAuthenticated ? children : null;
 };
 
 export default ProtectedRoute;

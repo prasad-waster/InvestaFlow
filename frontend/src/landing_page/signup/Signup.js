@@ -28,7 +28,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/signup",
+        `${process.env.REACT_APP_BACKEND_URL}/signup`,
         inputValue,
         { withCredentials: true }
       );
@@ -38,7 +38,7 @@ const Signup = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = `${process.env.REACT_APP_BACKEND_URL}/dashboard`;
+          window.location.href = `${process.env.REACT_APP_DASHBOARD_URL}/dashboard`;
         }, 2000);
       } else {
         handleError(message);

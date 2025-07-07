@@ -16,8 +16,8 @@ const MONGO_URL = process.env.MONGO_URL;
 app.use(
   cors({
     origin: [
-      "https://investa-flow-home.vercel.app/",
-      "https://investa-flow.vercel.app/",
+      "https://investa-flow-home.vercel.app",
+      "https://investa-flow.vercel.app",
     ],
     credentials: true,
   })
