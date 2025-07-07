@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
-import { useUser } from "../components/UserContext"; // adjust path as needed
+import { useUser } from "../components/UserContext"; // adjust path if needed
 
 const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -11,19 +10,24 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:3002/verify", {
-          withCredentials: true,
-        });
+        const res = await axios.get(
+          " https://investaflow.onrender.com/verify",
+          {
+            withCredentials: true,
+          }
+        );
 
         if (res.data.success) {
           setIsAuthenticated(true);
-          setUser(res.data.user); // save user object to global state
+          setUser(res.data.user);
         } else {
           setIsAuthenticated(false);
+          window.location.href = "https://investa-flow-home.vercel.app//login";
         }
       } catch (err) {
         console.error("Auth check failed", err);
         setIsAuthenticated(false);
+        window.location.href = "https://investa-flow-home.vercel.app//login";
       } finally {
         setLoading(false);
       }
@@ -34,7 +38,7 @@ const ProtectedRoute = ({ children }) => {
 
   if (loading) return <h2>Loading...</h2>;
 
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  return isAuthenticated ? children : null; // Already redirected if false
 };
 
 export default ProtectedRoute;

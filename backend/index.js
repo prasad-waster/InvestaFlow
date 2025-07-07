@@ -13,10 +13,12 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 const MONGO_URL = process.env.MONGO_URL;
 
-// ✅ Middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: [
+      "https://investa-flow-home.vercel.app/",
+      "https://investa-flow.vercel.app/",
+    ],
     credentials: true,
   })
 );
@@ -24,10 +26,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// ✅ Auth Routes
 app.use("/", authRoute);
 
-// ✅ Holdings API
 app.get("/allHoldings", async (req, res) => {
   try {
     const allHoldings = await HoldingModel.find({});
@@ -37,7 +37,6 @@ app.get("/allHoldings", async (req, res) => {
   }
 });
 
-// ✅ Positions API
 app.get("/allPositions", async (req, res) => {
   try {
     const allPositions = await PositionsModel.find({});
@@ -55,7 +54,7 @@ app.post("/newOrder", async (req, res) => {
     await newOrder.save();
 
     return res.status(201).json({
-      success: true, // ✅ This is what BuyActionWindow expects
+      success: true, //
       message: "Order placed successfully",
       order: newOrder,
     });
@@ -77,7 +76,6 @@ app.get("/getOrders", async (req, res) => {
   }
 });
 
-// ✅ MongoDB Connection & Server Start
 mongoose
   .connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
