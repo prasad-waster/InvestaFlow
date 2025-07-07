@@ -42,59 +42,35 @@ const Menu = () => {
 
   return (
     <div className="menu-container d-flex align-items-center justify-content-between px-4 py-2">
-      {/* Logo on the left */}
+      {/* Left: Logo */}
       <img src="/investaFlow.png" alt="Logo" style={{ width: "120px" }} />
 
-      {/* Centered menu, username, and logout */}
+      {/* Center: Menus + User + Logout */}
       <div className="d-flex align-items-center gap-4">
-        <Link
-          to="/dashboard"
-          onClick={() => handleMenuClick(0)}
-          className="text-decoration-none"
-        >
-          <p className={selectedMenu === 0 ? activeMenuClass : menuClass}>
-            Dashboard
-          </p>
-        </Link>
-        <Link
-          to="/dashboard/Orders"
-          onClick={() => handleMenuClick(1)}
-          className="text-decoration-none"
-        >
-          <p className={selectedMenu === 1 ? activeMenuClass : menuClass}>
-            Orders
-          </p>
-        </Link>
-        <Link
-          to="/dashboard/holdings"
-          onClick={() => handleMenuClick(2)}
-          className="text-decoration-none"
-        >
-          <p className={selectedMenu === 2 ? activeMenuClass : menuClass}>
-            Holdings
-          </p>
-        </Link>
-        <Link
-          to="/dashboard/positions"
-          onClick={() => handleMenuClick(3)}
-          className="text-decoration-none"
-        >
-          <p className={selectedMenu === 3 ? activeMenuClass : menuClass}>
-            Positions
-          </p>
-        </Link>
-        <Link
-          to="/dashboard/funds"
-          onClick={() => handleMenuClick(4)}
-          className="text-decoration-none"
-        >
-          <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>
-            Funds
-          </p>
-        </Link>
+        {[
+          { label: "Dashboard", path: "/dashboard" },
+          { label: "Orders", path: "/dashboard/Orders" },
+          { label: "Holdings", path: "/dashboard/holdings" },
+          { label: "Positions", path: "/dashboard/positions" },
+          { label: "Funds", path: "/dashboard/funds" },
+        ].map((item, index) => (
+          <Link
+            key={index}
+            to={item.path}
+            onClick={() => handleMenuClick(index)}
+            className="text-decoration-none"
+          >
+            <p className={selectedMenu === index ? activeMenuClass : menuClass}>
+              {item.label}
+            </p>
+          </Link>
+        ))}
 
         {/* Divider */}
-        <div style={{ width: "1px", height: "24px", background: "#ddd" }} />
+        <div style={{ width: "1px", height: "24px", background: "#000" }} />
+
+        {/* Username and Logout inline with menu style */}
+        <p className="menu fw-bold mb-0">{user?.username || "Loading..."}</p>
 
         <span
           onClick={handleLogout}
