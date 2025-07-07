@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useUser } from "./UserContext";
 import { toast } from "react-toastify";
 import axios from "axios";
-import "./Styles/Menu.css";
+import "./Styles/Menu.css"; // CSS file
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const { user, setUser } = useUser();
-  const navigate = useNavigate();
 
-  const handleMenuClick = (index) => {
-    setSelectedMenu(index);
-  };
+  const handleMenuClick = (index) => setSelectedMenu(index);
 
   const handleLogout = async () => {
     try {
@@ -43,91 +40,46 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      <img src="/investaFlow.png" alt="Logo" style={{ width: "120px" }} />
+      <img src="/investaFlow.png" alt="Logo" className="logo" />
 
-      <div className="menus" style={{ marginTop: "25px" }}>
-        <ul>
-          <li>
-            <Link
-              to="/dashboard"
-              onClick={() => handleMenuClick(0)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 0 ? activeMenuClass : menuClass}>
-                Dashboard
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/Orders"
-              onClick={() => handleMenuClick(1)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 1 ? activeMenuClass : menuClass}>
-                Orders
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/holdings"
-              onClick={() => handleMenuClick(2)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 2 ? activeMenuClass : menuClass}>
-                Holdings
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/positions"
-              onClick={() => handleMenuClick(3)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 3 ? activeMenuClass : menuClass}>
-                Positions
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dashboard/funds"
-              onClick={() => handleMenuClick(4)}
-              style={{ textDecoration: "none" }}
-            >
-              <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>
-                Funds
-              </p>
-            </Link>
-          </li>
+      <div className="menu-wrapper">
+        <ul className="menu-list">
+          {[
+            { label: "Dashboard", path: "/dashboard" },
+            { label: "Orders", path: "/dashboard/Orders" },
+            { label: "Holdings", path: "/dashboard/holdings" },
+            { label: "Positions", path: "/dashboard/positions" },
+            { label: "Funds", path: "/dashboard/funds" },
+          ].map((item, index) => (
+            <li key={index}>
+              <Link to={item.path} onClick={() => handleMenuClick(index)}>
+                <p
+                  className={
+                    selectedMenu === index ? activeMenuClass : menuClass
+                  }
+                >
+                  {item.label}
+                </p>
+              </Link>
+            </li>
+          ))}
         </ul>
-        <hr />
-        <div
-          className="profile d-flex align-items-center justify-content-between"
-          style={{ marginBottom: "20px", padding: "10px" }}
-        >
-          <div className="d-flex align-items-center gap-2">
-            <div
-              className="avatar bg-primary text-white rounded-circle text-center"
-              style={{
-                width: "40px",
-                height: "40px",
-                lineHeight: "40px",
-                fontWeight: "bold",
-              }}
-            >
+
+        <hr className="divider" />
+
+        <div className="profile">
+          <div className="user-info">
+            <div className="avatar">
               {user?.username?.substring(0, 2).toUpperCase() || "UN"}
             </div>
-            <p style={{ fontSize: "15px" }} className="mb-0">
+            <p className="username-text">
               <b>{user?.username || "Loading..."}</b>
             </p>
           </div>
 
           <button
             onClick={handleLogout}
-            className="btn btn-sm btn-outline-danger"
+            className="btn btn-sm btn-outline-danger logout-button"
           >
             Logout
           </button>
