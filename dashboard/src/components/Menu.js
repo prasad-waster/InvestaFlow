@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
 import { toast } from "react-toastify";
-
 import axios from "axios";
 import "./Styles/Menu.css";
 
@@ -106,16 +105,30 @@ const Menu = () => {
         </ul>
         <hr />
         <div
-          className="profile"
+          className="profile d-flex align-items-center justify-content-between"
           style={{ marginBottom: "20px", padding: "10px" }}
         >
-          <div className="avatar">
-            {user?.username?.substring(0, 2).toUpperCase() || "UN"}
+          <div className="d-flex align-items-center gap-2">
+            <div
+              className="avatar bg-primary text-white rounded-circle text-center"
+              style={{
+                width: "40px",
+                height: "40px",
+                lineHeight: "40px",
+                fontWeight: "bold",
+              }}
+            >
+              {user?.username?.substring(0, 2).toUpperCase() || "UN"}
+            </div>
+            <p style={{ fontSize: "15px" }} className="mb-0">
+              <b>{user?.username || "Loading..."}</b>
+            </p>
           </div>
-          <p style={{ fontSize: "15px" }} className="username">
-            <b>{user?.username || "Loading..."}</b>
-          </p>
-          <button onClick={handleLogout} className="logout-btn">
+
+          <button
+            onClick={handleLogout}
+            className="btn btn-sm btn-outline-danger"
+          >
             Logout
           </button>
         </div>

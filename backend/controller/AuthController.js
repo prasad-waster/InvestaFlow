@@ -20,6 +20,7 @@ module.exports.Signup = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
     const user = await User.create({
       email,
       username,
@@ -74,21 +75,21 @@ module.exports.Login = async (req, res) => {
     }
 
     const token = createSecretToken(user._id);
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+
     const { password: _, ...safeUser } = user._doc;
 
-    return res
-      .cookie("token", token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-        maxAge: 24 * 60 * 60 * 1000,
-      })
-      .status(200)
-      .json({
-        success: true,
-        message: "Login successful",
-        user: safeUser,
-      });
+    return res.status(200).json({
+      success: true,
+      message: "Login successful",
+      user: safeUser,
+    });
   } catch (error) {
     console.error("Login Error:", error);
     return res.status(500).json({ success: false, message: "Server Error" });
@@ -101,5 +102,9 @@ module.exports.Logout = (req, res) => {
     secure: true,
     sameSite: "None",
   });
-  return res.status(200).json({ success: true, message: "Logged out" });
+
+  return res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
 };
