@@ -27,7 +27,7 @@ const Menu = () => {
         autoClose: 2000,
       });
       setTimeout(() => {
-        navigate("/login");
+        window.location.href = "https://investa-flow-home.vercel.app/login";
       }, 2000);
     } catch (err) {
       console.error("Logout failed", err);
