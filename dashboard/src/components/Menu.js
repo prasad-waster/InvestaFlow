@@ -96,19 +96,26 @@ const Menu = () => {
         {/* Divider */}
         <div style={{ width: "1px", height: "24px", background: "#ddd" }} />
 
-        {/* Username and Logout inline */}
-        <span className="menu mb-0">{user?.username || "Loading..."}</span>
-        <button
+        <span
           onClick={handleLogout}
-          className="menu btn btn-sm bg-transparent border-0 p-0"
           style={{
             fontSize: "0.8rem",
-            color: "inherit",
-            marginLeft: "4px",
+            fontWeight: "400",
+            color: "rgb(70, 70, 70)",
+            border: "1px solid black",
+            padding: "4px 10px",
+            borderRadius: "2px",
+            cursor: "pointer",
+            marginLeft: "8px",
+          }}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") handleLogout();
           }}
         >
           Logout
-        </button>
+        </span>
       </div>
     </div>
   );
