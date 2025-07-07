@@ -22,12 +22,12 @@ const ProtectedRoute = ({ children }) => {
           setUser(res.data.user);
         } else {
           setIsAuthenticated(false);
-          window.location.href = "https://investa-flow-home.vercel.app//login";
+          window.location.href = "https://investa-flow-home.vercel.app/login";
         }
       } catch (err) {
         console.error("Auth check failed", err);
         setIsAuthenticated(false);
-        window.location.href = "https://investa-flow-home.vercel.app//login";
+        window.location.href = "https://investa-flow-home.vercel.app/login";
       } finally {
         setLoading(false);
       }
