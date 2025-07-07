@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./Styles/Menu.css";
 
 const Menu = () => {
-  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+  const [selectedMenu, setSelectedMenu] = useState(0);
   const { user, setUser } = useUser();
+  const navigate = useNavigate();
+
+  const handleMenuClick = (index) => {
+    setSelectedMenu(index);
+  };
 
   const handleLogout = async () => {
     try {
@@ -33,73 +38,95 @@ const Menu = () => {
     }
   };
 
+  const menuClass = "menu";
+  const activeMenuClass = "menu selected";
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3">
-      <Link className="navbar-brand d-flex align-items-center" to="/dashboard">
-        <img
-          src="/investaFlow.png"
-          alt="Logo"
-          style={{ width: "40px", marginRight: "10px" }}
-        />
-        <span className="fw-bold text-black">InvestaFlow</span>
-      </Link>
+    <div className="menu-container">
+      <img src="/investaFlow.png" alt="Logo" style={{ width: "120px" }} />
 
-      <button
-        className="navbar-toggler"
-        type="button"
-        onClick={() => setIsNavCollapsed(!isNavCollapsed)}
-        aria-controls="navbarNav"
-        aria-expanded={!isNavCollapsed}
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
-      <div
-        className={`${isNavCollapsed ? "collapse" : ""} navbar-collapse`}
-        id="navbarNav"
-      >
-        <ul className="navbar-nav mx-auto">
-          <li className="nav-item">
-            <Link className="nav-link text-black" to="/dashboard">
-              Dashboard
+      <div className="menus" style={{ marginTop: "25px" }}>
+        <ul>
+          <li>
+            <Link
+              to="/dashboard"
+              onClick={() => handleMenuClick(0)}
+              style={{ textDecoration: "none" }}
+            >
+              <p className={selectedMenu === 0 ? activeMenuClass : menuClass}>
+                Dashboard
+              </p>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link text-black" to="/dashboard/Orders">
-              Orders
+          <li>
+            <Link
+              to="/dashboard/Orders"
+              onClick={() => handleMenuClick(1)}
+              style={{ textDecoration: "none" }}
+            >
+              <p className={selectedMenu === 1 ? activeMenuClass : menuClass}>
+                Orders
+              </p>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link text-black" to="/dashboard/holdings">
-              Holdings
+          <li>
+            <Link
+              to="/dashboard/holdings"
+              onClick={() => handleMenuClick(2)}
+              style={{ textDecoration: "none" }}
+            >
+              <p className={selectedMenu === 2 ? activeMenuClass : menuClass}>
+                Holdings
+              </p>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link text-black" to="/dashboard/positions">
-              Positions
+          <li>
+            <Link
+              to="/dashboard/positions"
+              onClick={() => handleMenuClick(3)}
+              style={{ textDecoration: "none" }}
+            >
+              <p className={selectedMenu === 3 ? activeMenuClass : menuClass}>
+                Positions
+              </p>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link text-black" to="/dashboard/funds">
-              Funds
+          <li>
+            <Link
+              to="/dashboard/funds"
+              onClick={() => handleMenuClick(4)}
+              style={{ textDecoration: "none" }}
+            >
+              <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>
+                Funds
+              </p>
             </Link>
           </li>
         </ul>
-
-        <div className="d-flex align-items-center gap-2 profile-area mt-2 mt-lg-0">
-          <div className="avatar-initials">
-            {user?.username?.substring(0, 2).toUpperCase() || "UN"}
+        <hr />
+        <div className="profile d-flex align-items-center justify-content-between p-2 mb-3 border rounded bg-light shadow-sm">
+          <div className="d-flex align-items-center gap-2">
+            <div
+              className="avatar bg-primary text-white rounded-circle text-center fw-bold d-flex justify-content-center align-items-center"
+              style={{ width: "36px", height: "36px" }}
+            >
+              {user?.username?.substring(0, 2).toUpperCase() || "UN"}
+            </div>
+            <p className="mb-0 fs-6 fw-semibold">
+              {user?.username || "Loading..."}
+            </p>
           </div>
-          <span className="username-text">
-            {user?.username || "Loading..."}
-          </span>
-          <button className="logout-btn ms-2" onClick={handleLogout}>
-            <i className="bi bi-box-arrow-right me-1"></i> Logout
+
+          <button
+            className="mx-3"
+            onClick={handleLogout}
+            className="btn btn-sm btn-outline-danger px-2 py-1"
+          >
+            <i className="bi bi-box-arrow-right me-1"></i>Logout
           </button>
         </div>
       </div>
-    </nav>
+    </div>
   );
 };
 
