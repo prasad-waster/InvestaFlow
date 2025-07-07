@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
-import { toast } from "react-toastify";
 import axios from "axios";
 import "./Styles/Menu.css";
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const { user, setUser } = useUser();
   const navigate = useNavigate();
+
+  const handleMenuClick = (index) => {
+    setSelectedMenu(index);
+  };
 
   const handleLogout = async () => {
     try {
@@ -16,7 +19,7 @@ const Menu = () => {
         {},
         { withCredentials: true }
       );
-      setUser(null); // clear context/state
+      setUser(null);
       toast.success("Logged out successfully", {
         position: "bottom-right",
         autoClose: 2000,
