@@ -1,11 +1,10 @@
 import React from "react";
-import "../Styles/Stats.css"; // Add styling here
+import "../Styles/Stats.css";
 
 function Stats() {
   return (
     <div className="container py-5">
       <div className="row align-items-center">
-        {/* Text Content */}
         <div className="col-12 col-md-6 px-4 mb-5 mb-md-0">
           <h1 className="fs-2 mb-4 text-center text-md-start">
             Trust with confidence
@@ -43,8 +42,6 @@ function Stats() {
             </p>
           </div>
         </div>
-
-        {/* Image and Links */}
         <div className="col-12 col-md-6 px-4 text-center">
           <img
             src="media/images/ecosystem.png"

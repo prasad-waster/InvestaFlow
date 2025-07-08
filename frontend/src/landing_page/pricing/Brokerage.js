@@ -4,7 +4,6 @@ function Brokerage() {
   return (
     <div className="container">
       <div className="row px-3 py-5 mt-5 text-center border-top">
-        {/* Left Column: Brokerage Info */}
         <div className="col-lg-8 col-12 p-4">
           <a href="#" style={{ textDecoration: "none" }}>
             <h3 className="fs-4">Brokerage</h3>
@@ -41,7 +40,6 @@ function Brokerage() {
           </div>
         </div>
 
-        {/* Right Column: Link */}
         <div className="col-lg-4 col-12 p-4 mt-4 mt-lg-0">
           <a href="#" style={{ textDecoration: "none" }}>
             <h3 className="fs-4">List Of Charges</h3>

@@ -1,11 +1,10 @@
 import React from "react";
-import "../Styles/Education.css"; // Optional: for styling enhancements
+import "../Styles/Education.css";
 
 function Education() {
   return (
     <div className="container mt-5">
       <div className="row align-items-center">
-        {/* Image */}
         <div className="col-12 col-md-6 mb-4 mb-md-0 text-center">
           <img
             src="media/images/education.svg"
@@ -15,7 +14,6 @@ function Education() {
           />
         </div>
 
-        {/* Text Content */}
         <div className="col-12 col-md-6 text-center text-md-start">
           <h1 className="fs-2">Free and open market education</h1>
           <p className="text-muted mt-3">

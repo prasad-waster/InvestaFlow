@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import "./Styles/Positions.css"; // Keep using your custom styles too
 
 const Positions = () => {
   const [allPositions, setAllPositions] = useState([]);
