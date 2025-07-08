@@ -121,11 +121,13 @@ REACT_APP_API_KEY=your_finnhub_key
 - Signup
   ![Screenshot](./readme%20assets/Screenshot%202025-07-07%20181531.png)
 - Dashboard Overview
-  ![Dashboard Screenshot](./readme%20assets/Screenshot%202025-07-07%20181607.png)
-- Live Market Graphs
-  ![Screenshot](./readme%20assets/Screenshot%202025-07-07%20181650.png)
+  ![Dashboard Screenshot](./readme%20assets/Screenshot%202025-07-07%20190431.png)
+- Holdings Visuals
+  ![Screenshot](./readme%20assets/Screenshot%202025-07-07%20190506.png)
 - Order Tables
-  ![Screenshot](./readme%20assets/Screenshot%202025-07-07%20181621.png)
+  ![Screenshot](./readme%20assets/Screenshot%202025-07-07%20190447.png)
+
+---
 
 ---
 
