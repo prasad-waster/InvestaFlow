@@ -2,6 +2,8 @@
 
 InvestaFlow is a full-stack Zerodha-like stock trading dashboard built using:
 
+Deployed Link : https://investa-flow-home.vercel.app/
+
 - **Frontend**: React JS + Vite + Bootstrap
 - **Backend**: Node.js + Express + MongoDB + JWT authentication
 - **Deployment**: Vercel (frontend), Render (backend)
